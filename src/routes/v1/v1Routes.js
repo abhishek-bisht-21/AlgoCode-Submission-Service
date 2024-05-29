@@ -1,7 +1,5 @@
-const TestService = require('./testService');
-const fastifyPlugin = require('fastify-plugin');
-async function servicePlugin(fastify, options) {
-    fastify.decorate('testService', new TestService());
+async function v1Plugin(fastify, options) {
+    fastify.register(require('./test/testRoutes'), {prefix: '/test'});
 }
 
-module.exports = fastifyPlugin(servicePlugin);
+module.exports = v1Plugin
