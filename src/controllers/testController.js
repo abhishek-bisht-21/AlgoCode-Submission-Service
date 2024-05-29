@@ -1,6 +1,11 @@
-function pingRequest(req, res) {
-	return res.send({ data: 'pong-pong' });
+async function pingRequest(req, res) {
+
+    console.log(this.testService);
+
+    const response = await this.testService.pingCheck();
+    return res.send({data: response});
 }
 
-
-module.exports = pingRequest;
+module.exports =  {
+    pingRequest
+};
